@@ -9,7 +9,7 @@ public class myTextMain {
 		//自製文字編輯器的起始檔案
 		mainWindow m=new mainWindow(5,3);
 		m.setUP();
-		//dsffsaaa
+		
 	}
 
 }

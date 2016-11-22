@@ -2,7 +2,7 @@ package myTextGUI;
 
 import javax.swing.*;
 import java.awt.*;
-//wemf
+
 public class mainWindow {
 	int factorX,factorY;
 	javax.swing.JFrame jf;
