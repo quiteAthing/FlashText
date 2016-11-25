@@ -20,10 +20,14 @@ public class mainWindow {
 		jt.setEditable(true);
 		jt.setBackground(Color.green);
 		jt.setText("Hello JAVA");
+		JMenuItem open =new JMenuItem("OPEN       ");
+		JMenuItem save =new JMenuItem("SAVE");
 		JMenuBar jmb=new JMenuBar();
 		menus[0].setText("File");
 		menus[1].setText("Edit");
-		menus[2].setText("Options");
+		menus[2].setText("Tools");
+		menus[0].add(open);
+		menus[0].add(save);
 		jmb.setPreferredSize(new Dimension(basic.width,basic.height/20));
 		
 		for(JMenu j: menus){
