@@ -2,7 +2,7 @@ package myTextGUI;
 
 import javax.swing.*;
 import java.awt.*;
-
+//這個類別的內容已被 mainWindow.java 取代
 public class mainWindow {
 	int factorX,factorY;
 	javax.swing.JFrame jf;
@@ -20,8 +20,8 @@ public class mainWindow {
 		jt.setEditable(true);
 		jt.setBackground(Color.green);
 		jt.setText("Hello JAVA");
-		JMenuItem open =new JMenuItem("OPEN       ");
-		JMenuItem save =new JMenuItem("SAVE");
+		JMenuItem open =new JMenuItem(" OPEN       ");
+		JMenuItem save =new JMenuItem(" SAVE       ");
 		JMenuBar jmb=new JMenuBar();
 		menus[0].setText("File");
 		menus[1].setText("Edit");
