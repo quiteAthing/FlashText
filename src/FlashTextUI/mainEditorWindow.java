@@ -1,6 +1,8 @@
 package FlashTextUI;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -9,6 +11,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
+
+import listeners.dummyListener;
+
 
 public class mainEditorWindow extends JFrame{
 
@@ -24,9 +29,33 @@ public class mainEditorWindow extends JFrame{
 	String[] FileMenuSequence={"New","Open","Save","Save_As","Save and QUIT","Discard and Quit","Quit"};//檔案選單的內容物
 	String[] EditMenuSequence={"Copy","Cut","Paste","Font","Environment"};//編輯選單的內容物
 	String[] ToolsMenuSequence={"HighLighter","HookCompiler","Plugin","Contact","About"};//工具選單的內容物
+	Map<String,ActionListener> fileItem=new HashMap<>();
+	Map<String,ActionListener> editItem=new HashMap<>();
+	Map<String,ActionListener> toolsItem=new HashMap<>();
+	
 	private float editorFontSize;
 	public mainEditorWindow(){
 		super();
+		fileItem.put(FileMenuSequence[0],new dummyListener());
+		fileItem.put(FileMenuSequence[1],new dummyListener());
+		fileItem.put(FileMenuSequence[2],new dummyListener());
+		fileItem.put(FileMenuSequence[3],new dummyListener());
+		fileItem.put(FileMenuSequence[4],new dummyListener());
+		fileItem.put(FileMenuSequence[5],new dummyListener());
+		fileItem.put(FileMenuSequence[6],new dummyListener());
+		
+		editItem.put(EditMenuSequence[0],new dummyListener());
+		editItem.put(EditMenuSequence[1],new dummyListener());
+		editItem.put(EditMenuSequence[2],new dummyListener());
+		editItem.put(EditMenuSequence[3],new dummyListener());
+		editItem.put(EditMenuSequence[4],new dummyListener());
+		
+		toolsItem.put(ToolsMenuSequence[0],new dummyListener());
+		toolsItem.put(ToolsMenuSequence[1],new dummyListener());
+		toolsItem.put(ToolsMenuSequence[2],new dummyListener());
+		toolsItem.put(ToolsMenuSequence[3],new dummyListener());
+		toolsItem.put(ToolsMenuSequence[4],new dummyListener());
+		
 	}
 	
 	//設定視窗大小
@@ -41,16 +70,19 @@ public class mainEditorWindow extends JFrame{
 			menus.put(ir,new JMenu(ir));
 			
 		}
-		
 			JMenu tmp=menus.get("File");
 		for(int j=0;j<FileMenuSequence.length;j++){
-			tmp.add(new JMenuItem(FileMenuSequence[j]));
+			JMenuItem ttp=new JMenuItem(FileMenuSequence[j]);
+			ttp.addActionListener(fileItem.get(FileMenuSequence[j]));
+			tmp.add(ttp);
 			tmp.setMinimumSize(new Dimension(60,10));
 			tmp.setFont(tmp.getFont().deriveFont(DefaultFontSize));
-		}
+		}	
 			tmp=menus.get("Edit");
 		for(int j=0;j<EditMenuSequence.length;j++){
-			tmp.add(new JMenuItem(EditMenuSequence[j]));
+			JMenuItem ttp=new JMenuItem(EditMenuSequence[j]);
+			ttp.addActionListener(editItem.get(EditMenuSequence[j]));
+			tmp.add(ttp);
 			tmp.setMinimumSize(new Dimension(60,10));
 			tmp.setFont(tmp.getFont().deriveFont(DefaultFontSize));
 			
@@ -58,7 +90,9 @@ public class mainEditorWindow extends JFrame{
 		
 			tmp=menus.get("Tools");
 		for(int j=0;j<ToolsMenuSequence.length;j++){
-			tmp.add(new JMenuItem(ToolsMenuSequence[j]));
+			JMenuItem ttp=new JMenuItem(ToolsMenuSequence[j]);
+			ttp.addActionListener(toolsItem.get(ToolsMenuSequence[j]));
+			tmp.add(ttp);
 			tmp.setMinimumSize(new Dimension(60,10));
 			tmp.setFont(tmp.getFont().deriveFont(DefaultFontSize));
 		}
