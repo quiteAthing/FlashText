@@ -33,7 +33,6 @@ public class myTextMain {
 	public static void terminateCurrent(mainEditorWindow meww){
 		meww.terminate();
 		workingWindow-=1;
-		System.out.println(workingWindow);
 		if(workingWindow==0){
 			System.exit(0);
 		}
