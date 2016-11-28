@@ -84,6 +84,7 @@ public class mainEditorWindow extends JFrame{
 			tmp=menus.get("Edit");
 		for(int j=0;j<EditMenuSequence.length;j++){
 			JMenuItem ttp=new JMenuItem(EditMenuSequence[j]);
+			ttp.setEnabled(false);
 			ttp.addActionListener(editItem.get(EditMenuSequence[j]));
 			tmp.add(ttp);
 			tmp.setMinimumSize(new Dimension(60,10));
@@ -94,6 +95,7 @@ public class mainEditorWindow extends JFrame{
 			tmp=menus.get("Tools");
 		for(int j=0;j<ToolsMenuSequence.length;j++){
 			JMenuItem ttp=new JMenuItem(ToolsMenuSequence[j]);
+			ttp.setEnabled(false);
 			ttp.addActionListener(toolsItem.get(ToolsMenuSequence[j]));
 			tmp.add(ttp);
 			tmp.setMinimumSize(new Dimension(60,10));
