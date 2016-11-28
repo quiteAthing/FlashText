@@ -9,23 +9,31 @@ import FlashTextUI.mainEditorWindow;
 
 public class myTextMain {
 	static{
-		initFromFile();
+//		initFromFile();
 	}
-
+	public static mainEditorWindow mew;
 	public static void main(String[] args) {
+	
 		// TODO Auto-generated method stub
 		//自製文字編輯器的起始檔案
+		createNew();
+	}
+	
+	public static void createNew(){
 		//宣告主視窗物件並初始化之
-
-		mainEditorWindow mew=new mainEditorWindow();
+		mew=new mainEditorWindow();
 		mew.setFactors(6, 6, 12f, 40);
 		mew.setEditorFontSize(20f);
-		mew.setVisible(true);
+		mew.setVisible(true);		
+	}
+	
+	public static void terminateCurrent(){
+		createNew();
 		
 	}
 	
 	
-	//嘗試從檔案中載入設定值以作為初始化
+	//從檔案中載入設定值以作為初始化，現在裏頭除了println以外沒有其他東西
 	public static void initFromFile(){
 		System.out.println("from file");
 		File ini=new File("FlashText.ini");
@@ -50,5 +58,4 @@ public class myTextMain {
 			
 		}
 	}
-
 }

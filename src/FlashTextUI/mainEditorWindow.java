@@ -12,12 +12,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
+import listeners.NewListener;
 import listeners.dummyListener;
 
 
 public class mainEditorWindow extends JFrame{
-
-	
+	static int num=0;
 	private static final long serialVersionUID = 1L;
 	public String Title="Flash Text";
 	Dimension mdi;
@@ -32,11 +32,12 @@ public class mainEditorWindow extends JFrame{
 	Map<String,ActionListener> fileItem=new HashMap<>();
 	Map<String,ActionListener> editItem=new HashMap<>();
 	Map<String,ActionListener> toolsItem=new HashMap<>();
-	
 	private float editorFontSize;
+	
+	
 	public mainEditorWindow(){
 		super();
-		fileItem.put(FileMenuSequence[0],new dummyListener());
+		fileItem.put(FileMenuSequence[0],new NewListener(this));
 		fileItem.put(FileMenuSequence[1],new dummyListener());
 		fileItem.put(FileMenuSequence[2],new dummyListener());
 		fileItem.put(FileMenuSequence[3],new dummyListener());
@@ -55,6 +56,8 @@ public class mainEditorWindow extends JFrame{
 		toolsItem.put(ToolsMenuSequence[2],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[3],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[4],new dummyListener());
+		num+=1;
+		System.out.println("  num : "+num);
 		
 	}
 	
@@ -62,8 +65,9 @@ public class mainEditorWindow extends JFrame{
 	public void setFactors(int factorX,int factorY, float DefaultFontSize,int menuBarHeight){		
 		Dimension sysDim=java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		setPreferredSize(new Dimension((int)Math.round(sysDim.getWidth()/factorX*3),(int)Math.round(sysDim.getHeight()/factorY*3)));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle(Title);
+
 		jmb.setPreferredSize(new Dimension((int)sysDim.getWidth(),menuBarHeight));
 		jta.setFont(jta.getFont().deriveFont(DefaultFontSize));
 		for(String ir :loadMenuSequence){
@@ -114,6 +118,16 @@ public class mainEditorWindow extends JFrame{
 		editorFontSize=FontSize;
 		jta.setFont(getJMenuBar().getFont().deriveFont(editorFontSize));
 		
+	}
+	
+	public void terminate(){
+		mainEditorWindow.num-=1;
+		System.out.println("howmany windows" +num);
+		if(num==0){
+			//這邊用 1 表示是由這個方法終結程式。
+			System.exit(1);
+		}
+		dispose();
 	}
 	
 	
