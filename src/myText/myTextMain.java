@@ -14,8 +14,9 @@ public class myTextMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//¦Û»s¤å¦r½s¿è¾¹ªº°_©lÀÉ®×
-		//«Å§i¥Dµøµ¡ª«¥ó¨Ãªì©l¤Æ¤§
+		//è‡ªè£½æ–‡å­—ç·¨è¼¯å™¨çš„èµ·å§‹æª”æ¡ˆ
+		//å®£å‘Šä¸»è¦–çª—ç‰©ä»¶ä¸¦åˆå§‹åŒ–ä¹‹
+
 		mainEditorWindow mew=new mainEditorWindow();
 		mew.setFactors(6, 6, 12f, 40);
 		mew.setEditorFontSize(20f);
@@ -24,14 +25,14 @@ public class myTextMain {
 	}
 	
 	
-	//¹Á¸Õ±qÀÉ®×¤¤¸ü¤J³]©w­È¥H§@¬°ªì©l¤Æ
+	//å˜—è©¦å¾æª”æ¡ˆä¸­è¼‰å…¥è¨­å®šå€¼ä»¥ä½œç‚ºåˆå§‹åŒ–
 	public static void initFromFile(){
 		System.out.println("from file");
 		File ini=new File("FlashText.ini");
 		try(FileInputStream fis=new FileInputStream(ini)	
 				)
 		{
-			//¦]¬°iniÀÉªº¤º®e¤£¦h©Ò¥Hª½±µ¤@¦¸¸ü§¹¡A°ò¥»¤W¤]¤£·|¸õ¥XLongªº½d³ò©Ò¥H±µcast¦¨int¨Ó¥Î
+			//å› ç‚ºiniæª”çš„å…§å®¹ä¸å¤šæ‰€ä»¥ç›´æ¥ä¸€æ¬¡è¼‰å®Œï¼ŒåŸºæœ¬ä¸Šä¹Ÿä¸æœƒè·³å‡ºLongçš„ç¯„åœæ‰€ä»¥æ¥castæˆintä¾†ç”¨
 			char[] i=new char[(int)ini.length()-1];
 			for(int j=0;j<i.length;j++){
 				i[j]='X';

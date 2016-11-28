@@ -25,10 +25,10 @@ public class mainEditorWindow extends JFrame{
 	JTextArea jta=new JTextArea();
 	Map<String,JMenuItem> menuItems=new LinkedHashMap<>();
 	Map<String,JMenu> menus=new LinkedHashMap<>();
-	String[] loadMenuSequence={"File","Edit","Tools"}; //主選單的內容物
-	String[] FileMenuSequence={"New","Open","Save","Save_As","Save and QUIT","Discard and Quit","Quit"};//檔案選單的內容物
-	String[] EditMenuSequence={"Copy","Cut","Paste","Font","Environment"};//編輯選單的內容物
-	String[] ToolsMenuSequence={"HighLighter","HookCompiler","Plugin","Contact","About"};//工具選單的內容物
+	String[] loadMenuSequence={"File","Edit","Tools"}; 
+	String[] FileMenuSequence={"New","Open","Save","Save_As","Save and QUIT","Discard and Quit","Quit"};
+	String[] EditMenuSequence={"Copy","Cut","Paste","Font","Environment"};
+	String[] ToolsMenuSequence={"HighLighter","HookCompiler","Plugin","Contact","About"};
 	Map<String,ActionListener> fileItem=new HashMap<>();
 	Map<String,ActionListener> editItem=new HashMap<>();
 	Map<String,ActionListener> toolsItem=new HashMap<>();
@@ -58,7 +58,7 @@ public class mainEditorWindow extends JFrame{
 		
 	}
 	
-	//設定視窗大小
+
 	public void setFactors(int factorX,int factorY, float DefaultFontSize,int menuBarHeight){		
 		Dimension sysDim=java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		setPreferredSize(new Dimension((int)Math.round(sysDim.getWidth()/factorX*3),(int)Math.round(sysDim.getHeight()/factorY*3)));
