@@ -2,6 +2,7 @@ package FlashTextUI;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,7 +18,6 @@ import listeners.dummyListener;
 
 
 public class mainEditorWindow extends JFrame{
-	static int num=0;
 	private static final long serialVersionUID = 1L;
 	public String Title="Flash Text";
 	Dimension mdi;
@@ -56,9 +56,8 @@ public class mainEditorWindow extends JFrame{
 		toolsItem.put(ToolsMenuSequence[2],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[3],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[4],new dummyListener());
-		num+=1;
-		System.out.println("  num : "+num);
-		
+
+		this.addWindowListener(new ftWindowListener(this));
 	}
 	
 
@@ -114,6 +113,9 @@ public class mainEditorWindow extends JFrame{
 		
 	}
 	
+	
+	
+	
 	public void setEditorFontSize(float FontSize){
 		editorFontSize=FontSize;
 		jta.setFont(getJMenuBar().getFont().deriveFont(editorFontSize));
@@ -121,13 +123,7 @@ public class mainEditorWindow extends JFrame{
 	}
 	
 	public void terminate(){
-		mainEditorWindow.num-=1;
-		System.out.println("howmany windows" +num);
-		if(num==0){
-			//這邊用 1 表示是由這個方法終結程式。
-			System.exit(1);
-		}
-		dispose();
+		this.dispose();
 	}
 	
 	

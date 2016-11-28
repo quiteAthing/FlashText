@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import FlashTextUI.mainEditorWindow;
 
 public class myTextMain {
+	public static int workingWindow =0;
 	static{
 //		initFromFile();
 	}
@@ -21,16 +22,24 @@ public class myTextMain {
 	
 	public static void createNew(){
 		//宣告主視窗物件並初始化之
+		workingWindow+=1;
 		mew=new mainEditorWindow();
 		mew.setFactors(6, 6, 12f, 40);
 		mew.setEditorFontSize(20f);
 		mew.setVisible(true);		
 	}
 	
-	public static void terminateCurrent(){
-		createNew();
+	//意義跟名稱已經不符合，需要重新命名
+	public static void terminateCurrent(mainEditorWindow meww){
+		meww.terminate();
+		workingWindow-=1;
+		System.out.println(workingWindow);
+		if(workingWindow==0){
+			System.exit(0);
+		}
 		
 	}
+	
 	
 	
 	//從檔案中載入設定值以作為初始化，現在裏頭除了println以外沒有其他東西

@@ -16,7 +16,7 @@ public class NewListener  implements  ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		//呼叫靜態方法來關閉並開啟新視窗
-		myTextMain.terminateCurrent();
+		myTextMain.createNew();
 		
 	}
 	
