@@ -5,23 +5,29 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextArea;
 
-import FlashTextUI.DataLocationInfo;
+import FlashTextUI.mainEditorWindow;
 import myText.myTextMain;
 
 public class saveListener implements ActionListener {
-	JTextArea jta;
-	DataLocationInfo dInfo;
-	public saveListener(JTextArea editingField){
-		jta=editingField;
-		dInfo=myTextMain.getDefaultDIR();
+	mainEditorWindow meow;
+	public saveListener(mainEditorWindow MEW){
+		meow=MEW;
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("lines");
-		myTextMain.saveToFile(dInfo.getFile(), jta.getText());
+		if(meow.getDIR()==null){
+			System.out.println("詢問是否存到預設目錄，這邊偷懶暫時還沒弄~");
+			myTextMain.saveToFile(myTextMain.DefaultFile,meow.getPage().getText());
+		}else{
+			myTextMain.saveToFile(meow.getDIR(),meow.getPage().getText());
+			
+		}
 		System.out.println("completed"); 
 	}
+	
 
 }

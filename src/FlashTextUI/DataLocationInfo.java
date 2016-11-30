@@ -1,7 +1,7 @@
 package FlashTextUI;
 
 import java.io.File;
-
+//本類別已被廢棄
 public class DataLocationInfo {
 	private File dFile;//default file的簡寫
 	public DataLocationInfo(){

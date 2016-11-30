@@ -1,5 +1,6 @@
 package myText;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,12 +9,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 
-import FlashTextUI.DataLocationInfo;
 import FlashTextUI.mainEditorWindow;
 
 public class myTextMain {
 	public static int workingWindow =0;
-	private static DataLocationInfo DefaultDIR;
+	public static File DefaultFile;
 	static{
 		initFromFile();
 	}
@@ -62,14 +62,11 @@ public class myTextMain {
 
 			
 		}
-		catch(Exception e){
-			
-		}
+		catch(Exception e){	}
+		DefaultFile=new File("D:\\playground\\jo.txt");
 	}
 	
-	public static DataLocationInfo getDefaultDIR(){
-		return DefaultDIR;
-	}
+	
 	
 	//儲存檔案的公用方法
 	public static void saveToFile(File saveTo, String DataToSave){
@@ -79,6 +76,20 @@ public class myTextMain {
 			
 			}catch(Exception e){}
 		
+	}
+	
+	public static void inputContent(mainEditorWindow MEW,File got){
+		try(
+		BufferedReader bbr=new BufferedReader(new InputStreamReader(new FileInputStream(got),Charset.forName("utf-8")));)
+		{
+			char[] ch=new char[(int)got.length()];
+			bbr.read(ch);
+			MEW.takeINcontent(got, String.valueOf(ch));
+		}catch(Exception e){
+			System.out.println("這邊可以彈視窗出來");
+			e.printStackTrace();
+		}
+			
 	}
 	
 }

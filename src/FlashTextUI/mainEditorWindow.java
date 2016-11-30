@@ -2,7 +2,7 @@ package FlashTextUI;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -13,10 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
-import listeners.NewListener;
-import listeners.dummyListener;
-import listeners.saveListener;
-import myText.myTextMain;
+import listeners.*;
+
 
 
 public class mainEditorWindow extends JFrame{
@@ -35,14 +33,14 @@ public class mainEditorWindow extends JFrame{
 	Map<String,ActionListener> editItem=new HashMap<>();
 	Map<String,ActionListener> toolsItem=new HashMap<>();
 	private float editorFontSize;
-	DataLocationInfo DLI=new DataLocationInfo();
+	private File dir;
 	
 	
 	public mainEditorWindow(){
 		super();
 		fileItem.put(FileMenuSequence[0],new NewListener(this));
-		fileItem.put(FileMenuSequence[1],new dummyListener());
-		fileItem.put(FileMenuSequence[2],new saveListener(jta));
+		fileItem.put(FileMenuSequence[1],new openListener(this));
+		fileItem.put(FileMenuSequence[2],new saveListener(this));
 		fileItem.put(FileMenuSequence[3],new dummyListener());
 		fileItem.put(FileMenuSequence[4],new dummyListener());
 		fileItem.put(FileMenuSequence[5],new dummyListener());
@@ -60,7 +58,7 @@ public class mainEditorWindow extends JFrame{
 		toolsItem.put(ToolsMenuSequence[3],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[4],new dummyListener());
 		addWindowListener(new ftWindowListener(this));
-		DLI=myTextMain.getDefaultDIR();
+		
 		
 	}
 	
@@ -131,10 +129,18 @@ public class mainEditorWindow extends JFrame{
 		this.dispose();
 	}
 	
-	public DataLocationInfo getDIR(){
-		return DLI;
+	public File getDIR(){
+		return dir;
 	}
 	
+	public JTextArea getPage(){
+		return jta;
+	}
+	
+	public void takeINcontent(File source,String content){
+		dir=source;
+		jta.setText(content);
+	}	
 	
 	
 	
