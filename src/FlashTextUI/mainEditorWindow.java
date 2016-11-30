@@ -15,6 +15,8 @@ import javax.swing.JTextArea;
 
 import listeners.NewListener;
 import listeners.dummyListener;
+import listeners.saveListener;
+import myText.myTextMain;
 
 
 public class mainEditorWindow extends JFrame{
@@ -33,13 +35,14 @@ public class mainEditorWindow extends JFrame{
 	Map<String,ActionListener> editItem=new HashMap<>();
 	Map<String,ActionListener> toolsItem=new HashMap<>();
 	private float editorFontSize;
+	DataLocationInfo DLI=new DataLocationInfo();
 	
 	
 	public mainEditorWindow(){
 		super();
 		fileItem.put(FileMenuSequence[0],new NewListener(this));
 		fileItem.put(FileMenuSequence[1],new dummyListener());
-		fileItem.put(FileMenuSequence[2],new dummyListener());
+		fileItem.put(FileMenuSequence[2],new saveListener(jta));
 		fileItem.put(FileMenuSequence[3],new dummyListener());
 		fileItem.put(FileMenuSequence[4],new dummyListener());
 		fileItem.put(FileMenuSequence[5],new dummyListener());
@@ -56,8 +59,9 @@ public class mainEditorWindow extends JFrame{
 		toolsItem.put(ToolsMenuSequence[2],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[3],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[4],new dummyListener());
-
-		this.addWindowListener(new ftWindowListener(this));
+		addWindowListener(new ftWindowListener(this));
+		DLI=myTextMain.getDefaultDIR();
+		
 	}
 	
 
@@ -66,7 +70,6 @@ public class mainEditorWindow extends JFrame{
 		setPreferredSize(new Dimension((int)Math.round(sysDim.getWidth()/factorX*3),(int)Math.round(sysDim.getHeight()/factorY*3)));
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle(Title);
-
 		jmb.setPreferredSize(new Dimension((int)sysDim.getWidth(),menuBarHeight));
 		jta.setFont(jta.getFont().deriveFont(DefaultFontSize));
 		for(String ir :loadMenuSequence){
@@ -126,6 +129,10 @@ public class mainEditorWindow extends JFrame{
 	
 	public void terminate(){
 		this.dispose();
+	}
+	
+	public DataLocationInfo getDIR(){
+		return DLI;
 	}
 	
 	
