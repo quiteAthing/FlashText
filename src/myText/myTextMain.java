@@ -1,5 +1,6 @@
 package myText;
 
+import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,8 +15,10 @@ import FlashTextUI.mainEditorWindow;
 public class myTextMain {
 	public static int workingWindow =0;
 	public static File DefaultFile;
+	public static Dimension sysDim;
 	static{
 		initFromFile();
+		sysDim=java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
 	
 	public static void main(String[] args) {

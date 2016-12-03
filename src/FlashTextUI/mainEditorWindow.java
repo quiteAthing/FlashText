@@ -14,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
 import listeners.*;
+import myText.myTextMain;
 
 
 
@@ -64,11 +65,11 @@ public class mainEditorWindow extends JFrame{
 	
 
 	public void setFactors(int factorX,int factorY, float DefaultFontSize,int menuBarHeight){		
-		Dimension sysDim=java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		setPreferredSize(new Dimension((int)Math.round(sysDim.getWidth()/factorX*3),(int)Math.round(sysDim.getHeight()/factorY*3)));
+
+		setPreferredSize(new Dimension((int)Math.round(myTextMain.sysDim.getWidth()/factorX*3),(int)Math.round(myTextMain.sysDim.getHeight()/factorY*3)));
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle(Title);
-		jmb.setPreferredSize(new Dimension((int)sysDim.getWidth(),menuBarHeight));
+		jmb.setPreferredSize(new Dimension((int)myTextMain.sysDim.getWidth(),menuBarHeight));
 		jta.setFont(jta.getFont().deriveFont(DefaultFontSize));
 		for(String ir :loadMenuSequence){
 			menus.put(ir,new JMenu(ir));

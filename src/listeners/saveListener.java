@@ -20,7 +20,7 @@ public class saveListener implements ActionListener {
 		// TODO Auto-generated method stub
 		System.out.println("lines");
 		if(meow.getDIR()==null){
-			System.out.println("è©¢å•æ˜¯å¦å­˜åˆ°é è¨­ç›®éŒ„ï¼Œé€™é‚Šå·æ‡¶æš«æ™‚é‚„æ²’å¼„~");
+			System.out.println("œ[oˆêŒÂ‹âxæm–â¥”Û—v‘¶“—aİ˜Hœl");
 			myTextMain.saveToFile(myTextMain.DefaultFile,meow.getPage().getText());
 		}else{
 			myTextMain.saveToFile(meow.getDIR(),meow.getPage().getText());
