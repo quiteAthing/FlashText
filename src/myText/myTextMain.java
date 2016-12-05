@@ -66,7 +66,7 @@ public class myTextMain {
 			
 		}
 		catch(Exception e){	}
-		DefaultFile=new File("D:\\playground\\jo.txt");
+		DefaultFile=new File("D:\\playground\\FailedToCreateFile.txt");
 	}
 	
 	
