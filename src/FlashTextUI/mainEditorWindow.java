@@ -20,7 +20,7 @@ import myText.myTextMain;
 
 public class mainEditorWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private int edited=3;
+	private int edited=3;//本數值為0時表示文件沒有被編輯過，不為0時表示有編輯過。
 	public String Title="Flash Text";
 	Dimension mdi;
 	JMenuBar jmb=new JMenuBar();
@@ -48,13 +48,13 @@ public class mainEditorWindow extends JFrame{
 		fileItem.put(FileMenuSequence[5],new quitListener(this,quitListener.DISCARD_AND_QUIT));
 		fileItem.put(FileMenuSequence[6],new quitListener(this,quitListener.QUIT));
 		
-		editItem.put(EditMenuSequence[0],new dummyListener());
+		editItem.put(EditMenuSequence[0],new copyListener());
 		editItem.put(EditMenuSequence[1],new dummyListener());
 		editItem.put(EditMenuSequence[2],new dummyListener());
 		editItem.put(EditMenuSequence[3],new dummyListener());
 		editItem.put(EditMenuSequence[4],new dummyListener());
 		
-		//
+		//以下設定為進階內容，不在這一段的階段性目標
 		toolsItem.put(ToolsMenuSequence[0],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[1],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[2],new dummyListener());
@@ -69,7 +69,6 @@ public class mainEditorWindow extends JFrame{
 	public void setFactors(int factorX,int factorY, float DefaultFontSize,int menuBarHeight){		
 
 		setPreferredSize(new Dimension((int)Math.round(myTextMain.sysDim.getWidth()/factorX*3),(int)Math.round(myTextMain.sysDim.getHeight()/factorY*3)));
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle(Title);
 		jmb.setPreferredSize(new Dimension((int)myTextMain.sysDim.getWidth(),menuBarHeight));
 		jta.setFont(jta.getFont().deriveFont(DefaultFontSize));
@@ -88,7 +87,9 @@ public class mainEditorWindow extends JFrame{
 			tmp=menus.get("Edit");
 		for(int j=0;j<EditMenuSequence.length;j++){
 			JMenuItem ttp=new JMenuItem(EditMenuSequence[j]);
-			ttp.setEnabled(false);
+			if(editItem.get(EditMenuSequence[j]) instanceof dummyListener){
+				ttp.setEnabled(false);
+			}
 			ttp.addActionListener(editItem.get(EditMenuSequence[j]));
 			tmp.add(ttp);
 			tmp.setMinimumSize(new Dimension(60,10));
@@ -99,7 +100,9 @@ public class mainEditorWindow extends JFrame{
 			tmp=menus.get("Tools");
 		for(int j=0;j<ToolsMenuSequence.length;j++){
 			JMenuItem ttp=new JMenuItem(ToolsMenuSequence[j]);
-			ttp.setEnabled(false);
+			if(toolsItem.get(ToolsMenuSequence[j]) instanceof dummyListener){
+				ttp.setEnabled(false);
+			}
 			ttp.addActionListener(toolsItem.get(ToolsMenuSequence[j]));
 			tmp.add(ttp);
 			tmp.setMinimumSize(new Dimension(60,10));
