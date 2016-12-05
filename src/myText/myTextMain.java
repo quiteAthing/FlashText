@@ -87,13 +87,15 @@ public class myTextMain {
 		{
 			char[] ch=new char[(int)got.length()];
 			bbr.read(ch);
-			MEW.takeINcontent(got, String.valueOf(ch));
+			MEW.setDir(got);
+			MEW.takeINcontent(String.valueOf(ch));
 		}catch(Exception e){
 			System.out.println("這邊可以彈視窗出來");
 			e.printStackTrace();
 		}
 			
 	}
+	
 	
 }
 

@@ -20,6 +20,7 @@ import myText.myTextMain;
 
 public class mainEditorWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
+	private int edited=3;
 	public String Title="Flash Text";
 	Dimension mdi;
 	JMenuBar jmb=new JMenuBar();
@@ -42,10 +43,10 @@ public class mainEditorWindow extends JFrame{
 		fileItem.put(FileMenuSequence[0],new NewListener(this));
 		fileItem.put(FileMenuSequence[1],new openListener(this));
 		fileItem.put(FileMenuSequence[2],new saveListener(this));
-		fileItem.put(FileMenuSequence[3],new dummyListener());
-		fileItem.put(FileMenuSequence[4],new dummyListener());
-		fileItem.put(FileMenuSequence[5],new dummyListener());
-		fileItem.put(FileMenuSequence[6],new dummyListener());
+		fileItem.put(FileMenuSequence[3],new saveListener(this,saveListener.SAVE_AS));
+		fileItem.put(FileMenuSequence[4],new saveListener(this,saveListener.SAVE_AND_QUIT));
+		fileItem.put(FileMenuSequence[5],new quitListener(this,quitListener.DISCARD_AND_QUIT));
+		fileItem.put(FileMenuSequence[6],new quitListener(this,quitListener.QUIT));
 		
 		editItem.put(EditMenuSequence[0],new dummyListener());
 		editItem.put(EditMenuSequence[1],new dummyListener());
@@ -53,6 +54,7 @@ public class mainEditorWindow extends JFrame{
 		editItem.put(EditMenuSequence[3],new dummyListener());
 		editItem.put(EditMenuSequence[4],new dummyListener());
 		
+		//
 		toolsItem.put(ToolsMenuSequence[0],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[1],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[2],new dummyListener());
@@ -134,14 +136,21 @@ public class mainEditorWindow extends JFrame{
 		return dir;
 	}
 	
+	public void setDir(File src){
+		dir=src;
+	}
+	
 	public JTextArea getPage(){
 		return jta;
 	}
 	
-	public void takeINcontent(File source,String content){
-		dir=source;
+	public void takeINcontent(String content){
 		jta.setText(content);
-	}	
+	}
+	
+	public int getEditStatus(){
+		return edited;
+	}
 	
 	
 	
