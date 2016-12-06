@@ -16,7 +16,8 @@ import javax.swing.JLabel;
 
 import myText.myTextMain;
 
-//準備轉用JOptionPane，這個類別很有可能直接再見
+//已改用JOptionPane，本被別已無用途
+@Deprecated
 @SuppressWarnings("serial")
 public class toDefDir extends JFrame {
 	private String hint="本檔案沒有預設存檔位置，存到FlashText預設位置? \n (您可以在FlashText.ini 中的DefaultSaveDir設定預設位置)";
