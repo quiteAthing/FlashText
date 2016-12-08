@@ -14,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import fTextArea.fTextArea;
 import listeners.NewListener;
 import listeners.copyListener;
 import listeners.dummyListener;
@@ -30,7 +31,7 @@ public class mainEditorWindow extends JFrame{
 	public String Title="Flash Text";
 	Dimension mdi;
 	JMenuBar jmb=new JMenuBar();
-	JTextArea jta=new JTextArea();
+	fTextArea jta=new fTextArea();
 	JScrollPane jscrp=new JScrollPane(jta);
 	Map<String,JMenuItem> menuItems=new LinkedHashMap<>();
 	Map<String,JMenu> menus=new LinkedHashMap<>();
