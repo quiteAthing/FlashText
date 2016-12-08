@@ -60,8 +60,7 @@ public class mainEditorWindow extends JFrame{
 		toolsItem.put(ToolsMenuSequence[2],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[3],new dummyListener());
 		toolsItem.put(ToolsMenuSequence[4],new dummyListener());
-		addWindowListener(new ftWindowListener(this));
-		
+		addWindowListener(new ftWindowListener(this));		
 		
 	}
 	
