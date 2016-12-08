@@ -17,6 +17,7 @@ public class myTextMain {
 	public static File DefaultFile;
 	public static Dimension sysDim;
 	static{
+		//從檔案中讀取設定值
 		initFromFile();
 		sysDim=java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
@@ -60,8 +61,8 @@ public class myTextMain {
 			isr.read(i);
 			
 			
-			String intro=String.copyValueOf(i);
-			System.out.println("io :"+intro);
+			//String intro=String.copyValueOf(i);
+			//System.out.println("io :"+intro);
 
 			
 		}

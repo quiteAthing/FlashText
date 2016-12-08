@@ -11,9 +11,15 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import listeners.*;
+import listeners.NewListener;
+import listeners.copyListener;
+import listeners.dummyListener;
+import listeners.openListener;
+import listeners.quitListener;
+import listeners.saveListener;
 import myText.myTextMain;
 
 
@@ -25,6 +31,7 @@ public class mainEditorWindow extends JFrame{
 	Dimension mdi;
 	JMenuBar jmb=new JMenuBar();
 	JTextArea jta=new JTextArea();
+	JScrollPane jscrp=new JScrollPane(jta);
 	Map<String,JMenuItem> menuItems=new LinkedHashMap<>();
 	Map<String,JMenu> menus=new LinkedHashMap<>();
 	String[] loadMenuSequence={"File","Edit","Tools"}; 
@@ -67,11 +74,11 @@ public class mainEditorWindow extends JFrame{
 	
 
 	public void setFactors(int factorX,int factorY, float DefaultFontSize,int menuBarHeight){		
-
 		setPreferredSize(new Dimension((int)Math.round(myTextMain.sysDim.getWidth()/factorX*3),(int)Math.round(myTextMain.sysDim.getHeight()/factorY*3)));
 		setTitle(Title);
 		jmb.setPreferredSize(new Dimension((int)myTextMain.sysDim.getWidth(),menuBarHeight));
 		jta.setFont(jta.getFont().deriveFont(DefaultFontSize));
+		
 		for(String ir :loadMenuSequence){
 			menus.put(ir,new JMenu(ir));
 			
@@ -114,7 +121,7 @@ public class mainEditorWindow extends JFrame{
 		}
 		
 		setJMenuBar(jmb);
-		add(jta);
+		add(jscrp);
 		pack();
 		
 		
@@ -131,26 +138,33 @@ public class mainEditorWindow extends JFrame{
 		
 	}
 	
+	//結束這個編輯器並釋放資源。
 	public void terminate(){
 		this.dispose();
 	}
 	
+	
+	//傳回這個視窗所開啟的檔案的預設路徑，若是新檔案會是null。
 	public File getDIR(){
 		return dir;
 	}
 	
+	//從main接收開啟的檔案內容路徑。
 	public void setDir(File src){
 		dir=src;
 	}
 	
+	//提供內容給main裡的outputstream寫出。
 	public JTextArea getPage(){
 		return jta;
 	}
 	
+	//開啟檔案時用來設定編輯器視窗內容
 	public void takeINcontent(String content){
 		jta.setText(content);
 	}
 	
+	//取得這個檔案是否有被編輯過的紀錄。
 	public int getEditStatus(){
 		return edited;
 	}
