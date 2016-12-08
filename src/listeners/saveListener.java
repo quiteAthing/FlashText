@@ -79,22 +79,22 @@ public class saveListener implements ActionListener {
 	
 	protected static void saveAs(mainEditorWindow mew){
 		System.out.println("Save As");
+		int ifSave;
 		//放棄，改用JFileChooser
 		//這邊的東西可以改到myTextMain裡面當公用方法.....
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			}
+
 		
 		JFileChooser jfc=new JFileChooser(myTextMain.DefaultFile.getAbsolutePath());
+		
 		FileNameExtensionFilter ffef=new FileNameExtensionFilter("Text File","txt");
 		jfc.setFileFilter(ffef);
-		jfc.showSaveDialog(mew);
+		ifSave=jfc.showSaveDialog(mew);
+		if(ifSave==JFileChooser.APPROVE_OPTION){
 		File saveTo=jfc.getSelectedFile();
 		myTextMain.saveToFile(saveTo,mew.getPage().getText());
 		mew.setDir(saveTo);
+		}
+		else{return;}
 	}
 	
 	protected static void  justQuit(mainEditorWindow mew){

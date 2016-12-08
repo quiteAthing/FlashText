@@ -14,22 +14,36 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.UIManager;
+
 import FlashTextUI.mainEditorWindow;
 
 public class myTextMain {
 	public static int workingWindow =0;
-	public static File DefaultFile;
+	public static File DefaultFile;//Default file在Main中設定，來自FlashText.ini
 	public static Dimension sysDim;
 	public static Map<String,String> setts;
 	public static final String DefaultSaveLocation="DefaultSaveLocation";//用來從MAP中抓取DefaultSaveLocation的key。
 	static{
 		initFromFile();
+		
 		sysDim=java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	}
 	
 	public static void main(String[] args) {
 	
 		//自製文字編輯器的起始檔案
+		DefaultFile=new File(setts.get(DefaultSaveLocation));
+		
+		//讓FlashText套用作業系統預設的外觀，比Java的好看不少...
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+		
 		createNew();
 	}
 	
@@ -87,9 +101,6 @@ public class myTextMain {
 	
 	//儲存檔案的公用方法
 	public static void saveToFile(File saveTo, String DataToSave){
-		if(!saveTo.exists()){
-			
-		}
 		
 		
 		try( BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(saveTo),Charset.forName("utf-8")),8192);)
