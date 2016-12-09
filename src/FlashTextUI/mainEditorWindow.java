@@ -56,7 +56,7 @@ public class mainEditorWindow extends JFrame{
 		fileItem.put(FileMenuSequence[5],new quitListener(this,quitListener.DISCARD_AND_QUIT));
 		fileItem.put(FileMenuSequence[6],new quitListener(this,quitListener.QUIT));
 		
-		editItem.put(EditMenuSequence[0],new copyListener());
+		editItem.put(EditMenuSequence[0],new copyListener(this));
 		editItem.put(EditMenuSequence[1],new dummyListener());
 		editItem.put(EditMenuSequence[2],new dummyListener());
 		editItem.put(EditMenuSequence[3],new dummyListener());

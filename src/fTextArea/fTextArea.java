@@ -4,5 +4,8 @@ import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class fTextArea extends JTextArea{
-
+	
+	public void trying(){
+	
+	}
 }
