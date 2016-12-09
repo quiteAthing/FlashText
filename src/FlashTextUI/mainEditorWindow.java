@@ -17,8 +17,10 @@ import javax.swing.JTextArea;
 import fTextArea.fTextArea;
 import listeners.NewListener;
 import listeners.copyListener;
+import listeners.cutListener;
 import listeners.dummyListener;
 import listeners.openListener;
+import listeners.pasteListener;
 import listeners.quitListener;
 import listeners.saveListener;
 import myText.myTextMain;
@@ -57,8 +59,8 @@ public class mainEditorWindow extends JFrame{
 		fileItem.put(FileMenuSequence[6],new quitListener(this,quitListener.QUIT));
 		
 		editItem.put(EditMenuSequence[0],new copyListener(this));
-		editItem.put(EditMenuSequence[1],new dummyListener());
-		editItem.put(EditMenuSequence[2],new dummyListener());
+		editItem.put(EditMenuSequence[1],new cutListener(this));
+		editItem.put(EditMenuSequence[2],new pasteListener(this));
 		editItem.put(EditMenuSequence[3],new dummyListener());
 		editItem.put(EditMenuSequence[4],new dummyListener());
 		
