@@ -11,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 
 import FlashTextUI.mainEditorWindow;
+import fTextArea.fTextArea;
 
 public class myTextMain {
 	public static int workingWindow =0;
@@ -27,6 +28,7 @@ public class myTextMain {
 		// TODO Auto-generated method stub
 		//自製文字編輯器的起始檔案
 		createNew();
+		fTextArea j=new fTextArea();
 	}
 	
 	public static void createNew(){
